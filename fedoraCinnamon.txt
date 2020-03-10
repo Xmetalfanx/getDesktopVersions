@@ -1,0 +1,469 @@
+<!doctype html>
+
+
+
+<html>
+    <head>
+<script type="text/javascript" src="/packages/tw2/resources/tw2.jquery/static/jquery/1.7.1/jquery.js" ></script>
+
+<script type="text/javascript" src="/packages/tw2/resources/moksha.wsgi.widgets.moksha_js/static/moksha.js" ></script>
+
+<script type="text/javascript" src="/packages/tw2/resources/fedoracommunity.connectors.widgets.widgets/static/js/fcomm.js" ></script>
+
+<script type="text/javascript" src="/packages/tw2/resources/tw2.jqplugins.ui/static/jquery/ui/1.8.17/js/jquery-ui.js" ></script>
+
+<script type="text/javascript" src="/packages/tw2/resources/fedoracommunity.widgets.jquery_template/static/javascript/jquery.tmpl.js" ></script>
+
+<script type="text/javascript" src="/packages/tw2/resources/fedoracommunity.widgets.grid/static/javascript/ui/moksha.ui.grid.js" ></script>
+
+<script type="text/javascript" src="/packages/tw2/resources/fedoracommunity.widgets.grid/static/javascript/ui/moksha.ui.popup.js" ></script>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>Package cinnamon</title>
+    <link rel="stylesheet" type="text/css" href="https://apps.fedoraproject.org/global/fedora-bootstrap-1.0.2/fedora-bootstrap.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/packages/css/fedora-packages.css" media="all" />
+
+    <script type="text/javascript">
+        moksha.update_title("Package cinnamon", 0);
+    </script>
+    <link href="/images/favicon.ico"
+      type="image/vnd.microsoft.icon" rel="shortcut icon" />
+    <link href="//fedoraproject.org/favicon.ico"
+      type="image/x-icon" rel="shortcut icon"/>
+
+    <!--[if lt IE 7]>
+    <style type="text/css">
+        #wrapper
+        {
+            height: 100%;
+            overflow: visible!important;
+        }
+    </style>
+    <![endif]-->
+</head>
+
+<body id="chrome" class="home">
+    <div id="wrapper">
+        
+        <script src="/packages/js/typeahead.min.js"></script>
+        <link href="/packages/css/typeaheadjs.css" rel="stylesheet"/>
+        <div class="head" id="head-main">
+            
+        
+<script type="text/javascript">
+  moksha_base_url = "/packages/";
+  moksha_userid = "";
+  moksha_debug = False;
+  moksha_profile = False;
+</script>
+
+    
+
+       <div class="masthead">
+       <div class="container">
+               <script type="text/javascript">
+                   function do_search(form) {
+                       moksha.goto(form.action + '/' + form.search['value']);
+                       return False;
+                   }
+               </script>
+               <form action="/packages/s"
+                     onSubmit="return do_search(this);">
+                   <div class="col-sm-6" id="header-main">
+		      <div>
+                         <a href="/packages/">
+          <img src="/packages/images/fedora_packages_logo.png" alt="Fedora Packages" height="40px">
+			 </a>
+     </div>
+                   </div>
+                   <div class="col-sm-6">
+                     <div class="input-group">
+                       <input type="text" name="search" class="form-control searchbar" />
+                        <span class="input-group-btn">
+                          <input type="submit" value="Search" class="btn btn-primary" />
+                        </span>
+                    </div>
+                   </div>
+               </form>
+               <div class="clear"></div>
+       </div>
+       </div>
+
+       <script>
+         function strip(html) {
+           var tmp = document.createElement("div");
+           tmp.innerHTML = html;
+           return tmp.textContent || tmp.innerText || "";
+         }
+
+         // This is inlined because we need tg.url(...)
+         // We could create a function that takes the result of tg.url('/') as
+         // an arguemnt, and move this out into another file, but we only use it
+         // here for now, so it doesn't seem worth it yet.
+         $('.searchbar').typeahead([
+           {
+             name: 'test',
+             template: function(datum) {
+               return '<img src="' + datum['icon'] + '" height="50" width="50" style="vertical-align: middle; margin-right: 10px;" alt="' + datum['name'] + ' icon"' + '/> ' + datum['name'];
+             },
+             remote: {
+               url: "/packages/fcomm_connector/xapian/query/search_packages/%7B%22filters%22:%20%7B%22search%22:%22%QUERY%22%7D,%22rows_per_page%22:10,%22start_row%22:%200%7D",
+               filter: function(resp) {
+                 thing = [];
+                 console.log("pants")
+                 for (idx in resp['rows']) {
+                   row = resp['rows'][idx];
+                   // This is potentially client-side expensive, but might be worth it.
+                   $("<link />", { rel: "prefetch", href: "/packages/" + row['name'] }).appendTo('head');
+                   datum = {
+                     'name': strip(row['name']),
+                     'value': strip(row['name']),
+                     'icon': "/packages/images/icons/" + row['icon']
+                   };
+                   thing.push(datum);
+                 }
+                 return thing;
+               }
+             }
+           }]);
+         $('.searchbar').on('typeahead:selected', function (object, datum) {
+           window.location.href = "/packages/" + datum['name'];
+         });
+      </script>
+    
+
+        <div id="main_app">
+           <!-- START package chrome -->
+
+<div class="bodycontent pb-3">
+    <div class="subheader pb-2 clearfix">
+      <div class="container pt-2">
+      <img src="/packages/images/icons/package_128x128.png" class="package-image" height="96" width="96"/>
+      <div class="package-header">
+        <h2>cinnamon
+          <span class="dropdown show">
+            <a class="btn btn-sm btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              cinnamon in other apps
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="https://admin.fedoraproject.org/updates/cinnamon"><img src="/packages/images/16_bodhi.png"/> Bodhi </a> </li>
+              <a class="dropdown-item" href="https://bugzilla.redhat.com/buglist.cgi?component=cinnamon&query_format=advanced&product=Fedora&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED"><img src = "https://admin.fedoraproject.org/community/images/16_bugs.png"/> Bugzilla </a>
+              <a class="dropdown-item" href="https://retrace.fedoraproject.org/faf/problems/?component_names=cinnamon"><img src = "/packages/images/16_abrt.png"/> FAF </a>
+              <a class="dropdown-item" href="http://koji.fedoraproject.org/koji/search?match=glob&type=package&terms=cinnamon"><img src = "https://fedoraproject.org/static/images/icons/fedora-infra-icon_koji.png"/> Koji Builds </a>
+              <a class="dropdown-item" href="https://src.fedoraproject.org/rpms/cinnamon"><img src = "https://apps.fedoraproject.org/img/icons/git-logo.png" width=16px/> SCM </a>
+            </div>
+          </span>
+        </h2>
+        <div><em>Window management and application launching for GNOME</em></div>
+        <div>
+            <h4>Install this package:</h4>
+            <em> dnf install cinnamon </em>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+    <div id="tab-content">
+     <!-- start tabs -->
+  <div class="tab-container">
+    <div class="tabs">
+      <div class="container">
+          <ul class="nav nav-tabs nav-small">
+            
+            <li class="nav-item">
+            
+
+            <script type="text/javascript">
+              function overview_tab_selected(tab) {
+                var widget_url = "/_w/" + 'package_overview';
+                return tab_selected(tab, widget_url, "/packages/cinnamon/overview", "#tab_content_277dfae7-afec-4c0e-a2b8-a43003304143", {"subpackage_of": "", "package_name": "cinnamon"});
+              }
+            </script>
+            <a class="nav-link active" href="/packages/cinnamon/overview" onMouseOver="set_tabs_hover(this, True)" onMouseOut="set_tabs_hover(this, False)" onClick='return overview_tab_selected(this);'>
+                Overview
+            </a>
+            </li>
+            <li class="nav-item">
+            
+
+            <script type="text/javascript">
+              function builds_tab_selected(tab) {
+                var widget_url = "/_w/" + 'package_builds';
+                return tab_selected(tab, widget_url, "/packages/cinnamon/builds", "#tab_content_277dfae7-afec-4c0e-a2b8-a43003304143", {"subpackage_of": "", "package_name": "cinnamon"});
+              }
+            </script>
+            <a class="nav-link " href="/packages/cinnamon/builds" onMouseOver="set_tabs_hover(this, True)" onMouseOut="set_tabs_hover(this, False)" onClick='return builds_tab_selected(this);'>
+                Builds
+            </a>
+            </li>
+            <li class="nav-item">
+            
+
+            <script type="text/javascript">
+              function updates_tab_selected(tab) {
+                var widget_url = "/_w/" + 'package_updates';
+                return tab_selected(tab, widget_url, "/packages/cinnamon/updates", "#tab_content_277dfae7-afec-4c0e-a2b8-a43003304143", {"subpackage_of": "", "package_name": "cinnamon"});
+              }
+            </script>
+            <a class="nav-link " href="/packages/cinnamon/updates" onMouseOver="set_tabs_hover(this, True)" onMouseOut="set_tabs_hover(this, False)" onClick='return updates_tab_selected(this);'>
+                Updates
+            </a>
+            </li>
+            <li class="nav-item">
+            
+
+            <script type="text/javascript">
+              function bugs_tab_selected(tab) {
+                var widget_url = "/_w/" + 'package_bugs';
+                return tab_selected(tab, widget_url, "/packages/cinnamon/bugs", "#tab_content_277dfae7-afec-4c0e-a2b8-a43003304143", {"subpackage_of": "", "package_name": "cinnamon"});
+              }
+            </script>
+            <a class="nav-link " href="/packages/cinnamon/bugs" onMouseOver="set_tabs_hover(this, True)" onMouseOut="set_tabs_hover(this, False)" onClick='return bugs_tab_selected(this);'>
+                Bugs
+            </a>
+            </li>
+            <li class="nav-item">
+            
+
+            <script type="text/javascript">
+              function problems_tab_selected(tab) {
+                var widget_url = "/_w/" + 'package_problems';
+                return tab_selected(tab, widget_url, "/packages/cinnamon/problems", "#tab_content_277dfae7-afec-4c0e-a2b8-a43003304143", {"subpackage_of": "", "package_name": "cinnamon"});
+              }
+            </script>
+            <a class="nav-link " href="/packages/cinnamon/problems" onMouseOver="set_tabs_hover(this, True)" onMouseOut="set_tabs_hover(this, False)" onClick='return problems_tab_selected(this);'>
+                Problems
+            </a>
+            </li>
+            <li class="nav-item">
+            
+
+            <script type="text/javascript">
+              function contents_tab_selected(tab) {
+                var widget_url = "/_w/" + 'package_contents';
+                return tab_selected(tab, widget_url, "/packages/cinnamon/contents", "#tab_content_277dfae7-afec-4c0e-a2b8-a43003304143", {"subpackage_of": "", "package_name": "cinnamon"});
+              }
+            </script>
+            <a class="nav-link " href="/packages/cinnamon/contents" onMouseOver="set_tabs_hover(this, True)" onMouseOut="set_tabs_hover(this, False)" onClick='return contents_tab_selected(this);'>
+                Contents
+            </a>
+            </li>
+            <li class="nav-item">
+            
+
+            <script type="text/javascript">
+              function changelog_tab_selected(tab) {
+                var widget_url = "/_w/" + 'package_changelog';
+                return tab_selected(tab, widget_url, "/packages/cinnamon/changelog", "#tab_content_277dfae7-afec-4c0e-a2b8-a43003304143", {"subpackage_of": "", "package_name": "cinnamon"});
+              }
+            </script>
+            <a class="nav-link " href="/packages/cinnamon/changelog" onMouseOver="set_tabs_hover(this, True)" onMouseOut="set_tabs_hover(this, False)" onClick='return changelog_tab_selected(this);'>
+                Changelog
+            </a>
+            </li>
+            <li class="nav-item">
+            
+
+            <script type="text/javascript">
+              function sources_tab_selected(tab) {
+                var widget_url = "/_w/" + 'package_sources';
+                return tab_selected(tab, widget_url, "/packages/cinnamon/sources", "#tab_content_277dfae7-afec-4c0e-a2b8-a43003304143", {"subpackage_of": "", "package_name": "cinnamon"});
+              }
+            </script>
+            <a class="nav-link " href="/packages/cinnamon/sources" onMouseOver="set_tabs_hover(this, True)" onMouseOut="set_tabs_hover(this, False)" onClick='return sources_tab_selected(this);'>
+                Sources
+            </a>
+            </li>
+          </ul>
+        <script type="text/javascript">
+          //FIXME: this is just for prototyping, move to seperate .js file in future
+          function set_tabs_hover(tab, is_hovering) {
+              var tabs_div = $(tab).parents('.tabs');
+
+              if (is_hovering)
+                  tabs_div.addClass('hover');
+              else
+                  tabs_div.removeClass('hover');
+          }
+
+          function tab_selected(tab, widget_url, location_mask, content_container, kwds) {
+             var $tab = $(tab);
+
+             // set the tab to selected
+             tabs = $tab.parents('.tabs');
+             selected = tabs.find('.active');
+             selected.removeClass('active');
+             $tab.addClass('active');
+
+             // dynamically load the content
+             return moksha.dynamic_goto(widget_url, kwds, content_container, location_mask);
+          }
+        </script>
+    </div>
+  </div>
+    <div id="tab_content_277dfae7-afec-4c0e-a2b8-a43003304143" class="container pt-2">
+        
+<div class="col-sm-9">
+<div id="package-overview">
+  <div class="description-block">
+        <p class="package-description">Cinnamon is a Linux desktop which provides advanced
+innovative features and a traditional user experience.
+
+The desktop layout is similar to Gnome 2.
+The underlying technology is forked from Gnome Shell.
+The emphasis is put on making users feel at home and providing
+them with an easy to use and comfortable desktop experience.</p>
+    </div>
+    <div class="active-release-block">
+        <h3>Active Releases Overview</h3>
+        <div><div class="list header-list">
+    <table id="ActiveReleasesGrid3671a411-9da6-4626-bddd-7e808945de0b" class="table table-sm table-hover">
+        <thead class="thead-default">
+            <tr>
+                <th>Release</th>
+                <th class="nowrap">Latest Released Version</th>
+                <th class="nowrap">Version in Testing</th>
+            </tr>
+        </thead>
+        <tbody class="rowtemplate">
+            <tr>
+                <td class="stretch-table-column">
+                    <div>{{html release}}&nbsp;</div>
+                </td>
+                <td class="nowrap">{{html stable_version}}</td>
+                <td class="nowrap">{{html testing_version}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+    </div>
+    
+
+    <div class="history-block">
+        <h3>Recent History</h3>
+        <div class="history-cards list-group">
+          <div class="overlay"> <div class="message"></div> </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="col-sm-3 pl-2">
+
+  <div class="upstream-block mb-1">
+      <h4>Upstream</h4>
+      <a href="https://github.com/linuxmint/cinnamon">https://github.com/linuxmint/cinnamon</a>
+  </div>
+
+  <div class="package-tree mb-1">
+      <div><h4>Package Tree</h4></div>
+      <ul>
+        <li><a class="package-name" href="/packages/cinnamon">cinnamon</a>
+        <ul>
+                  <li><a class="package-name" href="/packages/cinnamon-devel-doc">cinnamon-devel-doc</a></li>
+        </ul>
+      </li>
+      </ul>
+  </div>
+  <div class="owner mb-1">
+      <div><h4>Point of Contact</h4></div>
+              <div class="package-owner"><a class="package-owner" href="https://fedoraproject.org/wiki/User:leigh123linux">leigh123linux</a> <span class="tag tag-info">Rawhide</span> </div>
+  </div>
+  <div class="build mb-1">
+      <div><h4>Latest Build</h4></div>
+      <div class="package-name">4.4.8-4.fc33</div>
+  </div>
+</div>
+<script>
+$(document).ready(function() {
+    var url = 'https://apps.fedoraproject.org/datagrepper/raw';
+    var params = {
+      'order': 'desc',
+      'meta': ['subtitle', 'link', 'icon', 'secondary_icon'],
+      'package': "cinnamon",
+      'grouped': true,
+      'not_topic': [
+        'org.fedoraproject.prod.buildsys.rpm.sign',
+        'org.fedoraproject.prod.buildsys.tag',
+        'org.fedoraproject.prod.buildsys.untag',
+        'org.fedoraproject.prod.buildsys.package.list.change',
+      ],
+      'rows_per_page': 20,
+    };
+    url = url + '?' + $.param(params, traditional=true);
+    var callback = function(whatever) {
+      $.each(whatever.raw_messages, function(i, msg) {
+          var line = '<div class="list-group-item">';
+          if (msg.icon != null) {
+            line = line + '<img src="' + msg.icon + '"/>'
+          }
+          if (msg.secondary_icon != null) {
+            line = line + '<img src="' + msg.secondary_icon + '"/>'
+          }
+
+          line = line + ' <span class="datetime">' + msg['human_time'] + ' </span>';
+
+	  var link = $("<a>");
+
+          if (msg.link != null) {
+	    link = link.attr("href", msg.link);
+          }
+
+          if (msg.subtitle != null) {
+	    link = link.text(msg.subtitle);
+          }
+
+          line = line + link.html() + '</div>';
+          $('.history-cards').append(line);
+      });
+    }
+    var overlay = $('.history-cards .overlay');
+    moksha.ajax_load(url, {}, callback, overlay, 'jsonp');
+});
+</script>
+
+    <div>
+		</div>
+  </div>
+	<script>
+			$(document).ready(function() {
+				$(".tab-container .tab-container .nav-tabs").addClass("nav-pills").removeClass("nav-tabs");
+			}); // end doc ready
+	</script>
+<!-- end tabs -->
+
+   </div>
+
+</div>
+<!-- END package chrome -->
+
+        </div>
+    </div>
+    
+        <div class="container">
+          <div id="bottom" class="text-muted text-xs-center pt-3 pb-3">
+            <p>Found a bug on this website?  <a href="https://github.com/fedora-infra/fedora-packages/issues/new">File a ticket.</a> For bugs in packages, click the "Open a New Bug" link on the packages Bugs page.   Note:  There's some caching going on here.  If you expect something and don't see it, check back in 5 minutes.</p>
+            This Web Site is licensed under the GNU Affero General Public License.  You may get sources for the current running code from these repositories:
+            <div>
+                <a href="https://fedoraproject.org/wiki/Legal/TrademarkGuidelines">Trademark Guidelines</a> |
+                <a href="https://github.com/fedora-infra/fedora-packages">Get the source for Fedora Packages</a> |
+                <a href="https://github.com/mokshaproject">Get the source for Moksha</a> |
+                <a href="https://kojipkgs.fedoraproject.org/packages/fedora-packages/">Fedora Packages SRPMS</a>
+            </div>
+          </div>
+        </div>
+				<script>
+				/*quick re-implement of dropdowns as fedora-bootstrap requires 1.9.1 of jquery*/
+				$(".dropdown").click(function(e){
+					e.stopPropagation();
+					$(".dropdown-menu", this).toggle();
+				});
+
+					$(document).click(function(){
+					$('.dropdown-menu').hide();
+
+					});
+				</script>
+    
+<script type="text/javascript">$(document).ready(function(){jQuery("#ActiveReleasesGrid3671a411-9da6-4626-bddd-7e808945de0b").mokshagrid({"rows_per_page": 10, "resource": "bodhi", "resource_path": "query_active_releases", "page_num": 1, "sort_order": -1, "filters": {"package": "cinnamon"}, "total_rows": 0})});</script></body>
+</html>
