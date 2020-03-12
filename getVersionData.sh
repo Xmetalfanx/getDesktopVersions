@@ -1,3 +1,6 @@
+#########################################################
+# Loading needed variables and functions 
+
 function userPrompt() {
   read -p "Press [Enter] to continue "
 }
@@ -40,7 +43,10 @@ function getDesktopInfo()
 function displayDesktopInfo()
 {
   clear
-  echo -e "CINNAMON INFO"
+  echo -e "$desktop INFO"
+  
+  
+  
   displayArchVersion
 
   displayDebianInfo
@@ -59,6 +65,14 @@ function getAndDisplayDEInfo()
   getDesktopInfo $desktop
 
   displayDesktopInfo
+
+  # Clear var
+  # echo here for testing 
+  echo -e "Clearing desktop var"
+  desktop=""
 }
 
 getAndDisplayDEInfo "cinnamon"
+
+# test for now 
+getAndDisplayDEInfo "mate-desktop"
