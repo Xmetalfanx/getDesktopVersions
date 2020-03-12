@@ -1,24 +1,4 @@
-#########################################################
-# Loading needed variables and functions 
-
-function userPrompt() {
-  read -p "Press [Enter] to continue "
-}
-
-clear
-echo -e "Loading Arch Linux file"
-. configs/getArchVersions.cfg
-
-echo -e "Loading Debian file"
-. configs/getDebianVersions.cfg
-
-#echo -e "Loading OpenSuse file"
-#echo -e "note to self: this may not be right, at the moment"
-#. configs/getOpenSuseVersions.cfg
-
-echo -e "Loading Ubuntu file"
-. configs/getUbuntuVersions.cfg
-
+. configs/loadInfo.cfg
 
 ######################################################
 function getDesktopInfo()
@@ -74,5 +54,14 @@ function getAndDisplayDEInfo()
 
 getAndDisplayDEInfo "cinnamon"
 
-# test for now 
 getAndDisplayDEInfo "mate-desktop"
+
+
+# testing for now 
+function xfceInfo
+{
+  # works on Debian and Ubuntu 
+  getAndDisplayDEInfo "xfce4"
+
+}
+
