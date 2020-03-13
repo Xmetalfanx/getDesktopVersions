@@ -1,22 +1,34 @@
 . configs/loadInfo.cfg
 
 ######################################################
+
+function clearVars()
+{
+  # Clear var
+  # echo here for testing
+  echo -e "Clearing desktop var"
+  currentDesktop=""
+  desktop=""
+  userPrompt
+}
+
+
 function getDesktopInfo()
 {
  
   clear
-  echo -e "Getting Desktop info about $desktop"
+  echo -e "Getting Desktop info for $1"
 
   # Arch Linux
-  getArchVersion "cinnamon"
+  getArchVersion "$1"
 
   # Debian 
-  getDebianInfo "cinnamon"
+  getDebianInfo "$1"
 
-  #getOpenSuseVersions "cinnamon"
+  #getOpenSuseVersions "$1"
 
   # Ubuntu
-  getUbuntuVersionInfo "cinnamon"
+  getUbuntuVersionInfo "$1"
 
 }
 
@@ -24,44 +36,30 @@ function displayDesktopInfo()
 {
   clear
   echo -e "$desktop INFO"
-  
-  
-  
+
   displayArchVersion
-
   displayDebianInfo
-
   #showOpenSuseInfo
-
-  displayUbuntuVersions
+  displayUbuntuVersions  
 }
+
+###########################################################################
 
 # Meta function idea ... not sure if this makes sense or is just extra code
 function getAndDisplayDEInfo()
 {
-  # PROBABLY not needed
-  desktop=$1
+  # $1 is the desktop name in string form
+  currentDesktop=$1
 
-  getDesktopInfo $desktop
+  getDesktopInfo $currentDesktop
 
   displayDesktopInfo
 
-  # Clear var
-  # echo here for testing 
-  echo -e "Clearing desktop var"
-  desktop=""
-}
-
-getAndDisplayDEInfo "cinnamon"
-
-getAndDisplayDEInfo "mate-desktop"
-
-
-# testing for now 
-function xfceInfo
-{
-  # works on Debian and Ubuntu 
-  getAndDisplayDEInfo "xfce4"
+  clearVars
 
 }
+
+#getAndDisplayDEInfo "cinnamon"
+
+getAndDisplayDEInfo "mate"
 
