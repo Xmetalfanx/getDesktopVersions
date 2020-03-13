@@ -2,45 +2,37 @@
 
 ######################################################
 
-function clearVars()
-{
-  # Clear var
-  # echo here for testing
-  echo -e "Clearing desktop var"
-  currentDesktop=""
-  desktop=""
-  userPrompt
-}
-
 
 function getDesktopInfo()
 {
  
-  clear
+  #clear
   echo -e "Getting Desktop info for $1"
 
   # Arch Linux
-  getArchVersion "$1"
+  #getArchVersion "$1"
 
   # Debian 
-  getDebianInfo "$1"
+  #getDebianInfo "$1"
 
-  #getOpenSuseVersions "$1"
+  getOpenSuseVersions "$1"
 
   # Ubuntu
-  getUbuntuVersionInfo "$1"
+  #getUbuntuVersionInfo "$1"
 
 }
 
 function displayDesktopInfo()
 {
-  clear
+  
+  # clear
+  echo -e "------------------------------"
   echo -e "$desktop INFO"
 
-  displayArchVersion
-  displayDebianInfo
-  #showOpenSuseInfo
-  displayUbuntuVersions  
+  #displayArchVersion
+  #displayDebianInfo
+  displayOpenSuseInfo
+  #displayUbuntuVersions  
 }
 
 ###########################################################################
@@ -59,7 +51,8 @@ function getAndDisplayDEInfo()
 
 }
 
-#getAndDisplayDEInfo "cinnamon"
+getAndDisplayDEInfo "cinnamon"
 
+userPrompt 
 getAndDisplayDEInfo "mate"
 
