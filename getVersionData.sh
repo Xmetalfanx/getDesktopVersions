@@ -8,35 +8,37 @@ function getDesktopInfo()
  
   #clear
   echo -e "Getting Desktop info for $1"
+  echo
+  echo -e "Warning: this MAY take a few seconds"
 
   # Arch Linux
-  #getArchVersion "$1"
+  getArchVersion "$1"
 
   # Debian 
-  #getDebianInfo "$1"
+  getDebianInfo "$1"
 
   # Fedora
   getFedoraInfo "$1"
 
-  #getOpenSuseVersions "$1"
+  getOpenSuseVersions "$1"
 
   # Ubuntu
-  #getUbuntuVersionInfo "$1"
+  getUbuntuVersionInfo "$1"
 
 }
 
 function displayDesktopInfo()
 {
   
-  # clear
+  clear
   echo -e "------------------------------"
   echo -e "$desktop INFO"
 
-  #displayArchVersion
-  #displayDebianInfo
+  displayArchVersion
+  displayDebianInfo
   displayFedoraInfo
-  #displayOpenSuseInfo
-  #displayUbuntuVersions  
+  displayOpenSuseInfo
+  displayUbuntuVersions  
 }
 
 ###########################################################################
@@ -56,10 +58,12 @@ function getAndDisplayDEInfo()
 }
 
 # Cinnamon
-#getAndDisplayDEInfo "cinnamon"
+getAndDisplayDEInfo "cinnamon"
+userPrompt
 
 # Mate
-#getAndDisplayDEInfo "mate"
+getAndDisplayDEInfo "mate"
+userPrompt
 
 # Plasma 5 / KDE Desktop 
 getAndDisplayDEInfo "plasma-desktop"
