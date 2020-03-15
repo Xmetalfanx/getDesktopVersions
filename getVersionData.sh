@@ -1,3 +1,5 @@
+#!/bin/bash
+
 . configs/loadInfo.cfg
 
 ######################################################
@@ -49,7 +51,7 @@ function getAndDisplayDEInfo()
   # $1 is the desktop name in string form
   currentDesktop=$1
 
-  getDesktopInfo $currentDesktop
+  getDesktopInfo "$currentDesktop"
 
   displayDesktopInfo
 
