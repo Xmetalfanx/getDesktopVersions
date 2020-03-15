@@ -15,7 +15,10 @@ function getDesktopInfo()
   # Debian 
   #getDebianInfo "$1"
 
-  getOpenSuseVersions "$1"
+  # Fedora
+  getFedoraInfo "$1"
+
+  #getOpenSuseVersions "$1"
 
   # Ubuntu
   #getUbuntuVersionInfo "$1"
@@ -31,7 +34,8 @@ function displayDesktopInfo()
 
   #displayArchVersion
   #displayDebianInfo
-  displayOpenSuseInfo
+  displayFedoraInfo
+  #displayOpenSuseInfo
   #displayUbuntuVersions  
 }
 
@@ -51,8 +55,11 @@ function getAndDisplayDEInfo()
 
 }
 
-getAndDisplayDEInfo "cinnamon"
+# Cinnamon
+#getAndDisplayDEInfo "cinnamon"
 
-userPrompt 
-getAndDisplayDEInfo "mate"
+# Mate
+#getAndDisplayDEInfo "mate"
 
+# Plasma 5 / KDE Desktop 
+getAndDisplayDEInfo "plasma-desktop"
