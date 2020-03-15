@@ -14,7 +14,7 @@ function getDesktopInfo()
   echo -e "Warning: this MAY take a few seconds"
 
   # Arch Linux
-  getArchVersion "$1"
+  getArchInfo "$1"
 
   # Debian 
   getDebianInfo "$1"
@@ -22,7 +22,7 @@ function getDesktopInfo()
   # Fedora
   getFedoraInfo "$1"
 
-  getOpenSuseVersions "$1"
+  getOpenSuseInfo "$1"
 
   # Ubuntu
   getUbuntuVersionInfo "$1"
@@ -36,11 +36,11 @@ function displayDesktopInfo()
   echo -e "------------------------------"
   echo -e "$desktop INFO"
 
-  displayArchVersion
+  displayArchInfo
   displayDebianInfo
   displayFedoraInfo
   displayOpenSuseInfo
-  displayUbuntuVersions  
+  displayUbuntuInfo
 }
 
 ###########################################################################
