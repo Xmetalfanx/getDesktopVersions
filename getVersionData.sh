@@ -20,18 +20,18 @@ function getDesktopInfo()
   # Debian
   echo "Getting Debian info"
   # Seems slow at times ... maybe I can optimize this 
-  #getDebianInfo "$1"
+  getDebianInfo "$1"
 
   # Fedora
   echo "Getting Fedora info"
-  #getFedoraInfo "$1"
+  getFedoraInfo "$1"
 
   echo "Getting OpenSuse info"
-  #getOpenSuseInfo "$1"
+  getOpenSuseInfo "$1"
 
   # Ubuntu
   echo "Getting Ubuntu info"
-  #getUbuntuInfo "$1"
+  getUbuntuInfo "$1"
 
 }
 
@@ -43,10 +43,10 @@ function displayDesktopInfo()
   echo -e "$desktop INFO"
 
   displayArchInfo
-  #displayDebianInfo
-  #displayFedoraInfo
-  #displayOpenSuseInfo
-  #displayUbuntuInfo
+  displayDebianInfo
+  displayFedoraInfo
+  displayOpenSuseInfo
+  displayUbuntuInfo
 }
 
 ###########################################################################
@@ -70,7 +70,6 @@ getAndDisplayDEInfo "cinnamon"
 
 # Mate
 getAndDisplayDEInfo "mate"
-
 
 #Plasma 5 / KDE Desktop 
 getAndDisplayDEInfo "plasma-desktop"
