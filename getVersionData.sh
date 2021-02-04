@@ -8,7 +8,7 @@
 function getDesktopInfo()
 {
  
-  #clear
+  clear
   echo -e "Getting Desktop info for $1"
   echo
   echo -e "Warning: this MAY take a few seconds"
