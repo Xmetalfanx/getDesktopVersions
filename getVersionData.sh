@@ -65,6 +65,9 @@ function getAndDisplayDEInfo()
 
 }
 
+# Budgie
+getAndDisplayDEInfo "budgie"
+
 # Cinnamon
 getAndDisplayDEInfo "cinnamon"
 
