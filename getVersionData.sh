@@ -4,13 +4,11 @@
 
 ######################################################
 
-
 function getDesktopInfo()
 {
  
   clear
-  echo -e "Getting Desktop info for $1"
-  echo
+  echo -e "Getting Desktop info for $1\n"
   echo -e "Warning: this MAY take a few seconds"
 
   # Arch Linux
@@ -19,7 +17,7 @@ function getDesktopInfo()
 
   # Debian
   echo "Getting Debian info"
-  # Seems slow at times ... maybe I can optimize this 
+  # Seems slow at times ... maybe I can optimize this
   getDebianInfo "$1"
 
   # Fedora
@@ -35,9 +33,8 @@ function getDesktopInfo()
 
 }
 
-function displayDesktopInfo()
-{
-  
+function displayDesktopInfo() {
+
   clear
   echo -e "------------------------------"
   echo -e "$desktop INFO"
@@ -52,8 +49,7 @@ function displayDesktopInfo()
 ###########################################################################
 
 # Meta function idea ... not sure if this makes sense or is just extra code
-function getAndDisplayDEInfo()
-{
+function getAndDisplayDEInfo() {
   # $1 is the desktop name in string form
   currentDesktop=$1
 
@@ -65,14 +61,29 @@ function getAndDisplayDEInfo()
 
 }
 
-# Budgie
-getAndDisplayDEInfo "budgie"
+function get-gtk3-info() {
+  # Budgie
+  getAndDisplayDEInfo "budgie"
 
-# Cinnamon
-getAndDisplayDEInfo "cinnamon"
+  # Cinnamon
+  getAndDisplayDEInfo "cinnamon"
+
+  getAndDisplayDEInfo "gnome-desktop"
+
+  getAndDisplayDEInfo "xfce"
+
+}
+
+function get-qt-info() {
+
+  #Plasma 5 / KDE Desktop 
+  getAndDisplayDEInfo "plasma-desktop"
+
+}
+
+get-gtk3-info
+get-qt-info
 
 # Mate
 getAndDisplayDEInfo "mate"
-
-#Plasma 5 / KDE Desktop 
-getAndDisplayDEInfo "plasma-desktop"
+getAndDisplayDEInfo "openbox"
