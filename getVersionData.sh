@@ -17,7 +17,7 @@ function getDesktopInfo()
 
   # Debian
   echo "Getting Debian info"
-  # Seems slow at times ... maybe I can optimize this
+  # # Seems slow at times ... maybe I can optimize this
   getDebianInfo "$1"
 
   # Fedora
@@ -27,7 +27,7 @@ function getDesktopInfo()
   echo "Getting OpenSuse info"
   getOpenSuseInfo "$1"
 
-  # Ubuntu
+  # # Ubuntu
   echo "Getting Ubuntu info"
   getUbuntuInfo "$1"
 
@@ -65,7 +65,7 @@ function get-gtk3-info() {
   # Budgie
   getAndDisplayDEInfo "budgie"
 
-  # Cinnamon
+  # Cinnamon (all but for Mint i think )
   getAndDisplayDEInfo "cinnamon"
 
   getAndDisplayDEInfo "gnome-desktop"
@@ -87,3 +87,8 @@ get-qt-info
 # Mate
 getAndDisplayDEInfo "mate"
 getAndDisplayDEInfo "openbox"
+
+# Linux Mint
+# aren't mate and xfce coming from upstream Ubuntu?
+getMintInfo "cinnamon"
+userPrompt
