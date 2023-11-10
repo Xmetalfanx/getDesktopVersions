@@ -1,0 +1,36 @@
+
+Desktop:	budgie-desktop
+Fedora 38 Version: 10.8.2-1.fc38
+Fedora 37 Version: 10.8.2-1.fc37
+
+Desktop:	cinnamon
+Fedora 38 Version: 5.8.4-5.fc38
+Fedora 37 Version: 5.6.8-2.fc37
+
+Desktop:	gnome-desktop3-data
+Fedora 38 Version: 44.6-1.fc38
+Fedora 37 Version: 43.9-1.fc37
+
+Desktop:	xfwm4
+Fedora 38 Version: 4.18.0-2.fc38
+Fedora 37 Version: 4.16.1-6.fc37
+
+Desktop:	plasma-desktop
+Fedora 38 Version: 5.27.8-1.fc38
+Fedora 37 Version: 5.27.8-1.fc37
+
+Desktop:	mate-desktop
+Fedora 38 Version: 1.26.2-1.fc38
+Fedora 37 Version: 1.26.2-1.fc37
+
+Desktop:	openbox
+Fedora 38 Version: 3.6.1-22.fc38
+Fedora 37 Version: 3.6.1-20.fc37
+
+Desktop:	lxde
+Fedora 38 Version: 0.99.2-22.fc38
+Fedora 37 Version: 0.99.2-19.fc37
+
+Desktop:	lxqt
+Fedora 38 Version: 1.2.0-2.fc38
+Fedora 37 Version: 1.1.0-2.fc37

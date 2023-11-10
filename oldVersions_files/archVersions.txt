@@ -1,0 +1,9 @@
+Arch Version of budgie-desktop: 10.8.2-2 
+Arch Version of cinnamon: 5.8.4-2 
+Arch Version of gnome-desktop3-data: 1:44.0-1 
+Arch Version of xfwm4: 4.18.4-1 
+Arch Version of plasma-desktop: 5.27.9-1 
+Arch Version of mate-desktop: 1.26.2-1 
+Arch Version of openbox: 3.6.1-10 
+Arch Version of lxde: 0.99.2-3 
+Arch Version of lxqt: 1.4.0-1 
