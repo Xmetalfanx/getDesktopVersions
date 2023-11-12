@@ -12,24 +12,24 @@ function getDesktopInfo()
   echo -e "Warning: this MAY take a few seconds"
 
   # Arch Linux
-  # echo "Getting Arch info"
-  # getArchInfo "$1"
+  echo "Getting Arch info"
+  getArchInfo "$1"
 
   # Debian
-  # echo "Getting Debian info"
+  echo "Getting Debian info"
   # # Seems slow at times ... maybe I can optimize this
-   # getDebianInfo "$1"
+  getDebianInfo "$1"
 
   # Fedora
-  # echo "Getting Fedora info"
-  # getFedoraInfo "$1"
+  echo "Getting Fedora info"
+  getFedoraInfo "$1"
 
   echo "Getting OpenSuse info"
   getOpenSuseInfo "$1"
 
   # # Ubuntu
-  #echo "Getting Ubuntu info"
-  #getUbuntuInfo "$1"
+  echo "Getting Ubuntu info"
+  getUbuntuInfo "$1"
 
 }
 
@@ -39,11 +39,11 @@ function displayDesktopInfo() {
   echo -e "------------------------------"
   echo -e "$desktop INFO"
 
-  # displayArchInfo
-  # displayDebianInfo
-  # displayFedoraInfo
+  displayArchInfo
+  displayDebianInfo
+  displayFedoraInfo
   displayOpenSuseInfo
-  # displayUbuntuInfo
+  displayUbuntuInfo
 }
 
 ###########################################################################
@@ -82,15 +82,15 @@ function get-qt-info() {
 }
 
 
-get-gtk3-info
-get-qt-info
+#get-gtk3-info
+#get-qt-info
 
-getAndDisplayDEInfo "mate"
-getAndDisplayDEInfo "openbox"
+#getAndDisplayDEInfo "mate"
+#getAndDisplayDEInfo "openbox"
 
 # ***** UNTESTED
 getAndDisplayDEInfo "lxde"
-getAndDisplayDEInfo "lxqt"
+#getAndDisplayDEInfo "lxqt"
 
 # Linux Mint
 # aren't mate and xfce coming from upstream Ubuntu?
