@@ -82,16 +82,16 @@ function get-qt-info() {
 }
 
 
-#get-gtk3-info
-#get-qt-info
+get-gtk3-info
+get-qt-info
 
-#getAndDisplayDEInfo "mate"
-#getAndDisplayDEInfo "openbox"
+getAndDisplayDEInfo "mate"
+getAndDisplayDEInfo "openbox"
 
 # ***** UNTESTED
 getAndDisplayDEInfo "lxde"
-#getAndDisplayDEInfo "lxqt"
+getAndDisplayDEInfo "lxqt"
 
 # Linux Mint
 # aren't mate and xfce coming from upstream Ubuntu?
-# getMintInfo "cinnamon"
+getMintInfo "cinnamon"
