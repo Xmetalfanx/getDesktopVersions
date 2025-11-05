@@ -19,7 +19,7 @@ function assignVersionVars() {
 
         lxde) latestVersion=$(curl -s "https://github.com/lxde/lxde-common/tags" | awk '/Release/ && /0/ {print $5; exit}' ) ;; 
 
-        lxqt) latestVersion=$(curl -s "https://lxqt-project.org/releases/" | awk '/Release LXQt/ {print $4; exit}' | sed 's/^.*Release//;s/<\/a>.*$//') ;;
+        lxqt) latestVersion=$(curl -sL "https://lxqt-project.org/releases/" | awk '/Release/ && /LXQt [0-9]/ { print $4; exit } ' | sed "s/<.*$//") ;;
 
         mate) latestVersion=$(curl -s "https://mate-desktop.org/" | awk -F ">" '/released/ { print $4;exit }' | sed 's/&.*$//g' | tr -d \[:space:] ) ;;
 
