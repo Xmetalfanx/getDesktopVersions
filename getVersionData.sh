@@ -76,9 +76,10 @@ function get-gtk3-info() {
 
 function get-qt-info() {
 
-  #Plasma 5 / KDE Desktop 
+  #Plasma 5 / KDE Desktop
   getAndDisplayDEInfo "plasma-desktop"
 
+  getAndDisplayDEInfo "lxqt"
 }
 
 
@@ -88,9 +89,7 @@ get-qt-info
 getAndDisplayDEInfo "mate"
 getAndDisplayDEInfo "openbox"
 
-# ***** UNTESTED
 getAndDisplayDEInfo "lxde"
-getAndDisplayDEInfo "lxqt"
 
 # Linux Mint
 # aren't mate and xfce coming from upstream Ubuntu?
