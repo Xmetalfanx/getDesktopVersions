@@ -1,0 +1,19 @@
+
+################################################################################
+# Gnome specific
+
+function getGnomeVersion() {
+    curl -sL "${leap_url}" |  awk -F ">" '/.\/gnome-shell-[0-9]/ {print $3;exit}' | sed "s/^.*$desktop-//;s/x86.*$//"
+}
+
+function getGnomeVersionOpenSUSE() {
+    Leap156Version=$(getGnomeVersion "${leap_url}" )
+    Leap160Version=$(getGnomeVersion "${leap_url}" )
+
+    echo -e "Leap156Version \t ${Leap156Version}"
+    echo -e "Leap160Version \t ${Leap160Version}"
+
+}
+
+# End of Gnome code
+#################################################################################
