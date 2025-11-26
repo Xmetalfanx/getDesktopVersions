@@ -4,58 +4,58 @@
 
 ######################################################
 
-function getDesktopInfo()
+function get_desktop_info()
 {
- 
+
   clear
   echo -e "Getting Desktop info for $1\n"
   echo -e "Warning: this MAY take a few seconds"
 
   # Arch Linux
   echo "Getting Arch info"
-  getArchInfo "$1"
+  get_arch_info "$1"
 
   # Debian
   echo "Getting Debian info"
   # # Seems slow at times ... maybe I can optimize this
-  getDebianInfo "$1"
+  get_debian_info "$1"
 
   # Fedora
   echo "Getting Fedora info"
-  getFedoraInfo "$1"
+  get_fedora_info "$1"
 
   echo "Getting OpenSuse info"
-  getOpenSuseInfo "$1"
+  get_opensuse_info "$1"
 
   # # Ubuntu
   echo "Getting Ubuntu info"
-  getUbuntuInfo "$1"
+  get_ubuntu_info "$1"
 
 }
 
-function displayDesktopInfo() {
+function display_desktop_info() {
 
   clear
   echo -e "------------------------------"
   echo -e "$desktop INFO"
 
-  displayArchInfo
-  displayDebianInfo
-  displayFedoraInfo
-  displayOpenSuseInfo
-  displayUbuntuInfo
+  display_arch_info
+  display_debian_info
+  display_fedora_info
+  display_opensuse_info
+  display_ubuntu_info
 }
 
 ###########################################################################
 
 # Meta function idea ... not sure if this makes sense or is just extra code
-function getAndDisplayDEInfo() {
+function get_and_display_DE_info() {
   # $1 is the desktop name in string form
   currentDesktop=$1
 
-  getDesktopInfo "$currentDesktop"
+  get_desktop_info "$currentDesktop"
 
-  displayDesktopInfo
+  display_desktop_info
 
   clearVars
 
@@ -63,33 +63,33 @@ function getAndDisplayDEInfo() {
 
 function get-gtk3-info() {
   # Budgie
-  getAndDisplayDEInfo "budgie"
+  get_and_display_DE_info "budgie"
 
   # Cinnamon (all but for Mint i think )
-  getAndDisplayDEInfo "cinnamon"
+  get_and_display_DE_info "cinnamon"
 
-  getAndDisplayDEInfo "gnome-desktop"
+  get_and_display_DE_info "gnome-desktop"
 
-  getAndDisplayDEInfo "xfce"
+  get_and_display_DE_info "xfce"
 
 }
 
 function get-qt-info() {
 
   #Plasma 5 / KDE Desktop
-  getAndDisplayDEInfo "plasma-desktop"
+  get_and_display_DE_info "plasma-desktop"
 
-  getAndDisplayDEInfo "lxqt"
+  get_and_display_DE_info "lxqt"
 }
 
 
 get-gtk3-info
 get-qt-info
 
-getAndDisplayDEInfo "mate"
-getAndDisplayDEInfo "openbox"
+get_and_display_DE_info "mate"
+get_and_display_DE_info "openbox"
 
-getAndDisplayDEInfo "lxde"
+get_and_display_DE_info "lxde"
 
 # Linux Mint
 # aren't mate and xfce coming from upstream Ubuntu?
