@@ -40,7 +40,6 @@ function display_desktop_info() {
   echo -e "$desktop INFO"
 
   display_debian_info
-  display_fedora_info
   display_opensuse_info
   display_ubuntu_info
 }
