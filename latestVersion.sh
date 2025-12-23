@@ -64,6 +64,11 @@ function get_desktop_info() {
     display_version "$desktop" "$version"
 }
 
+
+# Write output to latest_version.txt
+output_file="latest_version.txt"
+
 for de in budgie cinnamon gnome lxde lxqt mate openbox plasma5 xfce; do
-    get_desktop_info "$de"
+    get_desktop_info "$de" >> "$output_file"
 done
+echo "Output written to $output_file"
