@@ -1,55 +1,69 @@
 #!/bin/bash
 
+declare -A de_urls=(
+    [budgie]="https://github.com/BuddiesOfBudgie/budgie-desktop/releases"
+    [cinnamon]="https://github.com/linuxmint/cinnamon/tags"
+    [gnome]="https://release.gnome.org/45/"
+    [lxde]="https://github.com/lxde/lxde-common/tags"
+    [lxqt]="https://lxqt-project.org/releases/"
+    [mate]="https://mate-desktop.org/"
+    [openbox]="https://raw.githubusercontent.com/danakj/openbox/master/CHANGELOG"
+    [plasma5]="https://kde.org/plasma-desktop/"
+    [xfce]="https://xfce.org/download"
+)
 
-
-
-function assignVersionVars() {
-
-    desktop=${1}
-
-    # note to self: i am not a fan of my code for Gnome 
-
-
-    case $desktop in
-        budgie) latestVersion=$(curl -s "https://github.com/BuddiesOfBudgie/budgie-desktop/releases" | awk -F 'v' '/tree/ { print $2; exit }' | sed 's/\".*$//') ;;
-        
-        cinnamon) latestVersion=$(curl -s "https://github.com/linuxmint/cinnamon/tags" | awk '/releases\/tag/ && /[1-9]/ && !/master/ {print $5;exit}' | sed 's/^.*\///' | tr -d \") ;; 
-
-        gnome) latestVersion=$(curl -s "https://release.gnome.org/45/" | awk '/Introducing GNOME/ {print $3}' | sed 's/GNOME//;s/,//' ) ;;
-
-        lxde) latestVersion=$(curl -s "https://github.com/lxde/lxde-common/tags" | awk '/Release/ && /0/ {print $5; exit}' ) ;; 
-
-        lxqt) latestVersion=$(curl -sL "https://lxqt-project.org/releases/" | awk '/Release/ && /LXQt [0-9]/ { print $4; exit } ' | sed "s/<.*$//") ;;
-
-        mate) latestVersion=$(curl -s "https://mate-desktop.org/" | awk -F ">" '/released/ { print $4;exit }' | sed 's/&.*$//g' | tr -d \[:space:] ) ;;
-
-        openbox) latestVersion=$(curl -s "https://raw.githubusercontent.com/danakj/openbox/master/CHANGELOG" | awk '/:/ { print; exit }' | tr -d :) ;; 
-
-        plasma5) latestVersion=$(curl -s "https://kde.org/plasma-desktop/" | awk '/Latest/ {print }' | sed 's/^.*<h2>Latest Release://;s/<\/h2>.*$//' | awk '{ print $2}') ;;
-        
-        xfce) latestVersion=$(curl -s "https://xfce.org/download" | awk '/Stable release/ {print $4}' | sed 's/<.*$//') ;;
-
-    esac 
+function get_latest_version() {
+    local desktop="$1"
+    local url="${de_urls[$desktop]}"
+    local result=""
+    case "$desktop" in
+        budgie)
+            result=$(curl -s "$url" | awk -F 'v' '/tree/ { print $2; exit }' | sed 's/\".*$//')
+            ;;
+        cinnamon)
+            result=$(curl -s "$url" | awk '/releases\/tag/ && /[1-9]/ && !/master/ {print $5;exit}' | sed 's/^.*\///' | tr -d \" )
+            ;;
+        gnome)
+            result=$(curl -s "$url" | awk '/Introducing GNOME/ {print $3}' | sed 's/GNOME//;s/,//')
+            ;;
+        lxde)
+            result=$(curl -s "$url" | awk '/Release/ && /0/ {print $5; exit}')
+            ;;
+        lxqt)
+            result=$(curl -sL "$url" | awk '/Release/ && /LXQt [0-9]/ { print $4; exit } ' | sed "s/<.*$//")
+            ;;
+        mate)
+            result=$(curl -s "$url" | awk -F ">" '/released/ { print $4;exit }' | sed 's/&.*$//g' | tr -d '[:space:]')
+            ;;
+        openbox)
+            result=$(curl -s "$url" | awk '/:/ { print; exit }' | tr -d :)
+            ;;
+        plasma5)
+            result=$(curl -s "$url" | awk '/Latest/ {print }' | sed 's/^.*<h2>Latest Release://;s/<\/h2>.*$//' | awk '{ print $2}')
+            ;;
+        xfce)
+            result=$(curl -s "$url" | awk '/Stable release/ {print $4}' | sed 's/<.*$//')
+            ;;
+        *)
+            result="Unknown desktop environment"
+            ;;
+    esac
+    echo "$result"
 }
 
-
-function displayVersion() {
-
-    echo -e "Latest Version of $desktop is $latestVersion"
+function display_version() {
+    local desktop="$1"
+    local version="$2"
+    echo -e "Latest Version of $desktop is $version"
 }
 
-function getDesktopInfo() {
-
-    assignVersionVars "${1}"
-    displayVersion "${1}"
+function get_desktop_info() {
+    local desktop="$1"
+    local version
+    version=$(get_latest_version "$desktop")
+    display_version "$desktop" "$version"
 }
 
-getDesktopInfo "budgie"
-getDesktopInfo "cinnamon"
-getDesktopInfo "gnome"
-getDesktopInfo "lxde"
-getDesktopInfo "lxqt"
-getDesktopInfo "mate"
-getDesktopInfo "openbox"
-getDesktopInfo "plasma5"
-getDesktopInfo "xfce"
+for de in budgie cinnamon gnome lxde lxqt mate openbox plasma5 xfce; do
+    get_desktop_info "$de"
+done
