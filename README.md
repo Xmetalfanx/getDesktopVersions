@@ -15,8 +15,7 @@ Get current Desktop (DEs and some WMs) info across distro bases.
   - Fedora 38
   - Fedora 39
 - OpenSUSE
-  - Leap 15.5
-  - Leap 15.6
+  - Leap 16.0
   - Tumbleweed
 - Ubuntu
   - Focal
