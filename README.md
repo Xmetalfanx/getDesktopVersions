@@ -1,4 +1,4 @@
-# Get DE and WM Version Data 
+# Get DE and WM Version Data
 
 ## Description
 
@@ -12,8 +12,8 @@ Get current Desktop (DEs and some WMs) info across distro bases.
   - Bullseye
   - Bookworm
 - Fedora
-  - Fedora 38
-  - Fedora 39
+  - Fedora 42
+  - Fedora 43
 - OpenSUSE
   - Leap 16.0
   - Tumbleweed
@@ -22,7 +22,7 @@ Get current Desktop (DEs and some WMs) info across distro bases.
   - Jammy
   - Lunar
 
-## Usage 
+## Usage
 
 - getVersionData.sh - Gets the info regarding the distros (provided things are not commented out)
 - latestVersion.sh - Gets the latest version of the DE or WM released .. not related to any distro specifically
