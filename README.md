@@ -12,8 +12,8 @@ Get current Desktop (DEs and some WMs) info across distro bases.
   - Bullseye
   - Bookworm
 - Fedora
-  - Fedora 42
   - Fedora 43
+  - Fedora 44
 - OpenSUSE
   - Leap 16.0
   - Tumbleweed
