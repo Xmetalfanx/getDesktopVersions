@@ -18,32 +18,59 @@ function get_latest_version() {
     local result=""
     case "$desktop" in
         budgie)
-            result=$(curl -s "$url" | awk -F 'v' '/tree/ { print $2; exit }' | sed 's/\".*$//')
-            ;;
+            result=$(curl -s "$url" |
+            awk -F 'v' '/tree/ \
+                { print $2; exit }' |
+            sed 's/\".*$//' \
+            ) ;;
         cinnamon)
-            result=$(curl -s "$url" | awk '/releases\/tag/ && /[1-9]/ && !/master/ {print $5;exit}' | sed 's/^.*\///' | tr -d \" )
-            ;;
+            result=$(curl -sL "$url" |
+            awk '/releases\/tag\/[0-9]/ && !/unstable/ {
+                gsub(/^.*">|<\/a>.*/, "", $8)
+                print $8
+                exit}'
+            ) ;;
         gnome)
-            result=$(curl -s "$url" | awk '/Introducing GNOME/ {print $3}' | sed 's/GNOME//;s/,//')
-            ;;
+            result=$(curl -s "$url" |
+            awk '/Introducing GNOME/ \
+            { gsub("\">",""); \
+            print $5; exit }' ) ;;
         lxde)
-            result=$(curl -s "$url" | awk '/Release/ && /0/ {print $5; exit}')
-            ;;
+            result=$(curl -s "$url" |
+            awk '/Release/ && /0/ {print $5; exit}'
+            ) ;;
         lxqt)
-            result=$(curl -sL "$url" | awk '/Release/ && /LXQt [0-9]/ { print $4; exit } ' | sed "s/<.*$//")
-            ;;
+            result=$(curl -sL "$url" |
+                awk '/Release/ && /LXQt [0-9]/ \
+                { print $4; exit } ' | 
+                sed "s/<.*$//" ) ;;
         mate)
-            result=$(curl -s "$url" | awk -F ">" '/released/ { print $4;exit }' | sed 's/&.*$//g' | tr -d '[:space:]')
-            ;;
+
+            result=$(curl -sL "$url" |
+                awk '/released/ { \
+                gsub("&nbsp.*$",""); \
+                print $4; exit }' ) ;;
+
         openbox)
-            result=$(curl -s "$url" | awk '/:/ { print; exit }' | tr -d :)
-            ;;
-        plasma5)
-            result=$(curl -s "$url" | awk '/Latest/ {print }' | sed 's/^.*<h2>Latest Release://;s/<\/h2>.*$//' | awk '{ print $2}')
-            ;;
+
+            result=$(curl -s "$url" |
+                awk '/:/ \
+                { print; exit }' |
+                tr -d : ) ;;
+        plasma)
+
+            result=$(curl -sL "$url" |
+                tidy -q 2>/dev/null |
+                awk '/<h2>Latest Release/ \
+                { gsub("</h2>",""); \
+                print $4 }' ) ;;
         xfce)
-            result=$(curl -s "$url" | awk '/Stable release/ {print $4}' | sed 's/<.*$//')
-            ;;
+
+            result=$(curl -sL "$url" |
+                awk '/Stable release/ \
+                && /[0-9]/ \
+                { gsub("</h2>",""); print $4 } ' \
+                ) ;;
         *)
             result="Unknown desktop environment"
             ;;
