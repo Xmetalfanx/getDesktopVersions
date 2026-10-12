@@ -25,10 +25,11 @@ function get_latest_version() {
             ) ;;
         cinnamon)
             result=$(curl -sL "$url" |
-            awk '/releases\/tag\/[0-9]/ && !/unstable/ {
-                gsub(/^.*">|<\/a>.*/, "", $8)
-                print $8
-                exit}'
+            awk '/releases\/tag\/[0-9]/ \
+                && !/unstable/ { \
+                gsub(/^.*">|<\/a>.*/, "", $8); \
+                print $8; \
+                exit } '
             ) ;;
         gnome)
             result=$(curl -s "$url" |
@@ -37,35 +38,32 @@ function get_latest_version() {
             print $5; exit }' ) ;;
         lxde)
             result=$(curl -s "$url" |
-            awk '/Release/ && /0/ {print $5; exit}'
-            ) ;;
+            awk '/Release/ && /0/ \
+            {print $5; exit}' ) ;;
         lxqt)
             result=$(curl -sL "$url" |
                 awk '/Release/ && /LXQt [0-9]/ \
                 { print $4; exit } ' | 
                 sed "s/<.*$//" ) ;;
         mate)
-
             result=$(curl -sL "$url" |
                 awk '/released/ { \
                 gsub("&nbsp.*$",""); \
                 print $4; exit }' ) ;;
 
         openbox)
-
             result=$(curl -s "$url" |
-                awk '/:/ \
-                { print; exit }' |
-                tr -d : ) ;;
+                awk '/^.*[0-9]/ \
+                { gsub(":",""); \
+                print; exit} '
+            ) ;;
         plasma)
-
             result=$(curl -sL "$url" |
                 tidy -q 2>/dev/null |
                 awk '/<h2>Latest Release/ \
                 { gsub("</h2>",""); \
                 print $4 }' ) ;;
         xfce)
-
             result=$(curl -sL "$url" |
                 awk '/Stable release/ \
                 && /[0-9]/ \
