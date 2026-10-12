@@ -3,12 +3,12 @@
 declare -A de_urls=(
     [budgie]="https://github.com/BuddiesOfBudgie/budgie-desktop/releases"
     [cinnamon]="https://github.com/linuxmint/cinnamon/tags"
-    [gnome]="https://release.gnome.org/45/"
+    [gnome]="https://release.gnome.org/"
     [lxde]="https://github.com/lxde/lxde-common/tags"
     [lxqt]="https://lxqt-project.org/releases/"
     [mate]="https://mate-desktop.org/"
     [openbox]="https://raw.githubusercontent.com/danakj/openbox/master/CHANGELOG"
-    [plasma5]="https://kde.org/plasma-desktop/"
+    [plasma]="https://kde.org/plasma-desktop/"
     [xfce]="https://xfce.org/download"
 )
 
